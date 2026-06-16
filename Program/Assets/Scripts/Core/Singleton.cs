@@ -1,27 +1,35 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Singleton : MonoBehaviour
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static Singleton instance;
+    private static T instance;
 
-    public static Singleton Instance { get { return instance; } }
-
-    public void Awake()
-    {
-        if (instance == null)
+    public static T Instance
+    {  
+        get
         {
-            instance = this;
+            if (instance == null)
+            {
+                instance = (T)FindAnyObjectByType(typeof(T));
 
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+                if(instance == null)
+                {
+                    GameObject clone = new GameObject(typeof(T).Name);
+
+                    instance = clone.AddComponent<T>();
+                }
+            }
+
+            return instance;
         }
     }
 
-    public void Call()
+    public void Awake()
     {
-        Debug.Log("Call");
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
     }
 }
