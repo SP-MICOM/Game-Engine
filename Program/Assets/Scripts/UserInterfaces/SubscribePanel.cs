@@ -32,9 +32,7 @@ public class SubScribePanel: MonoBehaviourPunCallbacks
 
     public void Failed(PlayFabError playFabError)
     {
-        playFabError.GenerateErrorReport();
-
-        PanelManager.Instance.Open(playFabError.GenerateErrorReport());
+        PanelManager.Instance.Open(Panel.Error, playFabError.GenerateErrorReport());
     }
 
 }

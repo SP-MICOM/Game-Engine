@@ -1,4 +1,4 @@
-enum Panel
+public enum Panel
 {
     Error,
     Subscribe,
