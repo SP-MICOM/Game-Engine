@@ -4,11 +4,11 @@ using PlayFab;
 using PlayFab.ClientModels;
 using TMPro;
 
-public class SubScrip : MonoBehaviourPunCallbacks
+public class SubScribePanel: MonoBehaviourPunCallbacks
 {
     [SerializeField] TMP_InputField[] inputFields = new TMP_InputField[3];
 
-    private void Awake()
+    public void Awake()
     {
         inputFields = GetComponentsInChildren<TMP_InputField>();
     }
