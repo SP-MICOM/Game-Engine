@@ -16,6 +16,8 @@ public class RoomPanel : MonoBehaviourPunCallbacks
     public void Start()
     {
         Select();
+
+        OnRoomNameChanged();
     }
 
     public void CreateRoom()
